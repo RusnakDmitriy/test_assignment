@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getData} from '../AC';
+import {getData, getPersonalData} from '../AC';
 
 class ListSide extends Component{
     constructor(props){
@@ -11,13 +11,15 @@ class ListSide extends Component{
         this.props.getData();
     }
 
-
+    getPersonInformation=(item)=>{
+        this.props.getPersonalData(item)
+    }
 
     render(){
         const {data, loaded, loading}=this.props;
         if(loading) return;
         const createDataList=data.map((item, i)=>
-            <li key={i} className="listItem">
+            <li key={i} className="listItem" onClick={this.getPersonInformation.bind(this, item)}>
                 <img src={item.general.avatar} className="itemElement"/>
                 <div className="itemElement">
                     <h5>{item.general.firstName}</h5>
@@ -43,4 +45,4 @@ const mapStateToProps=(state)=>{
     }
 };
 
-export default connect(mapStateToProps, {getData})(ListSide)
+export default connect(mapStateToProps, {getData, getPersonalData})(ListSide)

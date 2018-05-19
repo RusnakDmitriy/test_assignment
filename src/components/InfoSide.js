@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-//import {getData} from '../AC';
 
 class InfoSide extends Component{
     constructor(props){
@@ -8,10 +7,33 @@ class InfoSide extends Component{
     }
 
     render(){
-        return(
-            <div className="side infoSide"></div>
-        )
+        const {personalData}=this.props;
+        console.log(personalData);
+        if(!personalData){
+            return <div className=" side infoSide"></div>
+        } else{
+            return(
+                <div className="side infoSide">
+                    <div className="infoItem">
+                        <img src={personalData.general.avatar} />
+                        <div>
+                            <h1>{personalData.general.firstName} {personalData.general.lastName}</h1>
+                            <h3>{personalData.job.title} - {personalData.job.company}</h3>
+                        </div>
+                        <div>
+                            <h5>Address is: {personalData.address.zipCode}, {personalData.address.street}, {personalData.address.city}, {personalData.address.country}</h5>
+                            <h5>email: {personalData.contact.email}</h5>
+                            <h5>phone: {personalData.contact.phone}</h5>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     }
-}
+};
 
-export default InfoSide
+const mapStateToProps=(state)=>{
+    return {personalData: state.getPersonalData.personalState}
+};
+
+export default connect(mapStateToProps)(InfoSide)

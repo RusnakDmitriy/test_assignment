@@ -17,19 +17,26 @@ h1, h2, h3, h4, h5, h6{
 
 .side{
   float: left;
+  height: inherit;
+  box-sizing: border-box;
+}
+
+.side:first-child{
+  width: 20%;
+}
+
+.side:last-child{
+  width: 68%;
 }
 
 .listSide{
-  width: 20%;
-  height: inherit;
   min-width: 350px;
   padding: 0 10px;
   overflow-y: scroll;
 }
 
 .infoSide{
-  width: calc(100% - 20%);
-  height: inherit;
+  position: relative;
 }
 
 .listSide input{
@@ -60,3 +67,24 @@ h1, h2, h3, h4, h5, h6{
   vertical-align: middle;
 }
 
+.infoItem{
+  padding: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.infoItem div{
+  margin:  40px 0;
+}
+
+.infoItem div h5{
+  margin:  10px 0;
+}

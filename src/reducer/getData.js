@@ -2,7 +2,7 @@ import {START, SUCCESS, FAIL, GET_REQUEST} from '../constants';
 
 const defData={
     data: [],
-    loaded: false,   // in this assignment loaded/loading is not necessary but this will be good whith remote server work
+    loaded: false,
     loading: false
 };
 
@@ -15,6 +15,12 @@ export default (dataState=defData, action)=>{
         case(GET_REQUEST+SUCCESS):
             return Object.assign({},{data: payload.response,
                 loaded: true,
+                loading: false
+            });
+
+        case(GET_REQUEST+FAIL):
+            return Object.assign({},{data: payload.response,
+                loaded: false,
                 loading: false
             })
     }

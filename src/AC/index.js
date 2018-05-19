@@ -1,5 +1,5 @@
 import React from 'react';
-import {START, SUCCESS, FAIL, GET_REQUEST} from '../constants';
+import {START, SUCCESS, FAIL, GET_REQUEST, GET_PERSONAL_INFORMATION} from '../constants';
 //import '../clients.json';
 
 export function getData(){
@@ -26,5 +26,12 @@ export function getData(){
                 type: GET_REQUEST+FAIL,
                 payload: {error}
             }))
+    }
+}
+
+export function getPersonalData(item){
+    return{
+        type: GET_PERSONAL_INFORMATION,
+        payload: {item}
     }
 }
