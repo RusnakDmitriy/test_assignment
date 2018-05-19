@@ -5,7 +5,7 @@ import InfoSide from './components/InfoSide';
 class App extends Component {
     render() {
         return (
-            <div>
+            <div className="mainScreen clearfix" >
                 <ListSide />
                 <InfoSide />
             </div>
