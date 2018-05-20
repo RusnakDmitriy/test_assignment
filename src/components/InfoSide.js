@@ -8,7 +8,6 @@ class InfoSide extends Component{
 
     render(){
         const {personalData}=this.props;
-        console.log(personalData);
         if(!personalData){
             return <div className=" side infoSide"></div>
         } else{
