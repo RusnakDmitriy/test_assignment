@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {itemSelector} from '../selector';
 
 class InfoSide extends Component{
     constructor(props){
@@ -8,6 +9,7 @@ class InfoSide extends Component{
 
     render(){
         const {personalData}=this.props;
+
         if(!personalData){
             return <div className=" side infoSide"></div>
         } else{
@@ -32,7 +34,7 @@ class InfoSide extends Component{
 };
 
 const mapStateToProps=(state)=>{
-    return {personalData: state.getPersonalData.personalState}
+    return {personalData: itemSelector(state)}
 };
 
 export default connect(mapStateToProps)(InfoSide)
